@@ -1,0 +1,2736 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa HTML 2025 - De Básico a Avanzado</title>
+    <meta name="description"
+        content="Guía completa e interactiva para aprender HTML desde cero hasta nivel avanzado. Incluye ejemplos prácticos, ejercicios y proyectos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Reset y Variables CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #1e40af;
+            --accent-color: #06d6a0;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --bg-color: #ffffff;
+            --bg-secondary: #f8fafc;
+            --border-color: #e5e7eb;
+            --code-bg: #1e293b;
+            --code-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Tema Oscuro */
+        [data-theme="dark"] {
+            --text-color: #f9fafb;
+            --text-light: #9ca3af;
+            --bg-color: #111827;
+            --bg-secondary: #1f2937;
+            --border-color: #374151;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilos Base */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="20" fill="url(%23a)"/></svg>') repeat;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navegación */
+        .nav {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+            background: var(--bg-color);
+        }
+
+        /* Botón Tema */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            padding: 3rem 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            text-decoration: none;
+            color: var(--text-light);
+            display: block;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .sidebar-menu a:hover {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+        }
+
+        /* Contenido */
+        .content {
+            background: var(--bg-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 3rem;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h4 {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .section p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* Listas */
+        .section ul,
+        .section ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Código */
+        pre {
+            background: var(--code-bg);
+            color: var(--code-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border: 1px solid #374151;
+        }
+
+        code {
+            background: var(--bg-secondary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: var(--code-color);
+        }
+
+        /* Tarjetas */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        /* Alertas */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            border-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            border-color: var(--success-color);
+            color: #065f46;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-color: var(--warning-color);
+            color: #92400e;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            border-color: var(--error-color);
+            color: #991b1b;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+        }
+
+        /* Ejercicios Prácticos */
+        .exercise {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .exercise::before {
+            content: "🏋️ Ejercicio Práctico";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .exercise h4 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+
+        /* Proyectos */
+        .project {
+            background: linear-gradient(135deg, #fef7cd, #fde68a);
+            border: 2px solid var(--warning-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .project::before {
+            content: "🚀 Proyecto";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--warning-color);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Barra de Progreso */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Estilos para el formulario de contacto */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+
+        form label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        form input,
+        form textarea {
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            border-color: #3b82f6;
+            outline: none;
+        }
+
+        form button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        form button:hover {
+            background: #1e40af;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 0.75rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: static;
+                order: 2;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            pre {
+                font-size: 0.8rem;
+                padding: 1rem;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section.active {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        /* Scroll personalizado */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Barra de Progreso -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>📚 Guía Completa HTML 2025</h1>
+            <p>Aprende HTML desde cero hasta nivel avanzado con ejemplos interactivos y proyectos prácticos</p>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-brand">HTML Guide 2025</div>
+            <ul class="nav-menu">
+                <a href="#" class="nav-link active" data-target="intro">Inicio</a>
+                <a href="#" class="nav-link" data-target="projects">Proyectos</a>
+                <a href="#" class="nav-link" data-target="resources">Recursos</a>
+                <a href="#" class="nav-link" data-target="contacto">Contacto</a>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        <div class="main">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h3>📖 Contenidos</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#" data-section="intro">🚀 Introducción</a></li>
+                    <li><a href="#" data-section="setup">⚙️ Preparación</a></li>
+                    <li><a href="#" data-section="basics">📝 Fundamentos</a></li>
+                    <li><a href="#" data-section="structure">🏗️ Estructura</a></li>
+                    <li><a href="#" data-section="text">📄 Elementos de Texto</a></li>
+                    <li><a href="#" data-section="links">🔗 Enlaces e Imágenes</a></li>
+                    <li><a href="#" data-section="lists">📋 Listas</a></li>
+                    <li><a href="#" data-section="tables">📊 Tablas</a></li>
+                    <li><a href="#" data-section="forms">📝 Formularios</a></li>
+                    <li><a href="#" data-section="semantic">🎯 HTML5 Semántico</a></li>
+                    <li><a href="#" data-section="multimedia">🎵 Multimedia</a></li>
+                    <li><a href="#" data-section="css">🎨 CSS Básico</a></li>
+                    <li><a href="#" data-section="responsive">📱 Responsive</a></li>
+                    <li><a href="#" data-section="advanced">⚡ Avanzado</a></li>
+                    <li><a href="#" data-section="practices">✅ Buenas Prácticas</a></li>
+                    <li><a href="#" data-section="projects">🎯 Proyectos</a></li>
+                    <li><a href="#" data-section="resources">📚 Recursos</a></li>
+                </ul>
+            </aside>
+
+            <!-- Contenido -->
+            <main class="content">
+
+                <!-- Sección Introducción -->
+                <section id="intro" class="section active">
+                    <h2>🚀 Introducción a HTML</h2>
+
+                    <div class="alert alert-info">
+                        <strong>¡Bienvenido!</strong> Esta es una guía completa e interactiva para aprender HTML desde
+                        cero hasta nivel avanzado.
+                    </div>
+
+                    <h3>¿Qué es HTML?</h3>
+                    <p>HTML (HyperText Markup Language) es el lenguaje de marcado estándar para crear páginas web. No es
+                        un lenguaje de programación, sino un lenguaje de marcado que utiliza etiquetas para estructurar
+                        el contenido.</p>
+
+                    <h3>¿Por qué aprender HTML en 2025?</h3>
+                    <ul>
+                        <li>Es la base fundamental de toda página web</li>
+                        <li>Necesario para cualquier carrera en desarrollo web</li>
+                        <li>Complementa tecnologías modernas como React, Vue, etc.</li>
+                        <li>Mejora la accesibilidad y SEO de las páginas web</li>
+                        <li>Es el primer paso hacia una carrera en tecnología</li>
+                    </ul>
+
+                    <h3>Lo que aprenderás</h3>
+                    <div class="card">
+                        <p>Al finalizar esta guía podrás:</p>
+                        <ul>
+                            <li>✅ Crear páginas web completamente funcionales</li>
+                            <li>✅ Entender la estructura y semántica del HTML</li>
+                            <li>✅ Implementar formularios y multimedia</li>
+                            <li>✅ Aplicar principios de diseño responsive</li>
+                            <li>✅ Seguir las mejores prácticas del desarrollo web moderno</li>
+                            <li>✅ Crear un portafolio profesional</li>
+                        </ul>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Tu Primera Meta</h4>
+                        <p>Antes de continuar, establece tu objetivo personal:</p>
+                        <ul>
+                            <li>¿Quieres crear tu propia página web?</li>
+                            <li>¿Estás buscando cambiar de carrera?</li>
+                            <li>¿Quieres mejorar tus habilidades actuales?</li>
+                        </ul>
+                        <p><strong>Escribe tu objetivo y tenlo presente durante todo el aprendizaje.</strong></p>
+                    </div>
+                </section>
+
+                <!-- Sección Preparación -->
+                <section id="setup" class="section">
+                    <h2>⚙️ Preparación del Entorno</h2>
+
+                    <h3>Herramientas Necesarias</h3>
+
+                    <div class="card">
+                        <h4>Editor de Código (Elige uno):</h4>
+                        <ol>
+                            <li><strong>Visual Studio Code</strong> (Recomendado - Gratuito)
+                                <ul>
+                                    <li>Descarga: <a href="https://code.visualstudio.com/"
+                                            target="_blank">https://code.visualstudio.com/</a></li>
+                                    <li>Extensiones útiles: HTML CSS Support, Live Server, Prettier</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sublime Text</strong> (Prueba gratuita)</li>
+                            <li><strong>Atom</strong> (Gratuito)</li>
+                            <li><strong>Notepad++</strong> (Windows - Gratuito)</li>
+                        </ol>
+                    </div>
+
+                    <div class="card">
+                        <h4>Navegadores para Pruebas:</h4>
+                        <ul>
+                            <li>🌐 Google Chrome (Recomendado para desarrollo)</li>
+                            <li>🦊 Mozilla Firefox</li>
+                            <li>🔷 Microsoft Edge</li>
+                            <li>🍎 Safari (si tienes Mac)</li>
+                        </ul>
+                    </div>
+
+                    <h3>Configuración Inicial</h3>
+                    <div class="alert alert-success">
+                        <strong>Pasos a seguir:</strong>
+                        <ol>
+                            <li>Crea una carpeta llamada "MiPrimerSitioWeb" en tu escritorio</li>
+                            <li>Abre tu editor de código</li>
+                            <li>Instala la extensión "Live Server" en VS Code para ver cambios en tiempo real</li>
+                            <li>Configura tu espacio de trabajo</li>
+                        </ol>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Ejercicio de Configuración</h4>
+                        <p>Vamos a verificar que todo esté funcionando:</p>
+                        <ol>
+                            <li>Abre VS Code</li>
+                            <li>Crea un archivo llamado "test.html"</li>
+                            <li>Escribe "!" y presiona Tab (debería crear una estructura HTML básica)</li>
+                            <li>Guarda el archivo y ábrelo con Live Server</li>
+                        </ol>
+                        <p><strong>Si ves una página en blanco en tu navegador, ¡estás listo para continuar!</strong>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Sección Fundamentos -->
+                <section id="basics" class="section">
+                    <h2>📝 Fundamentos Básicos</h2>
+
+                    <h3>¿Qué son las Etiquetas?</h3>
+                    <p>Las etiquetas HTML son elementos que definen la estructura y el contenido de una página web. Se
+                        escriben entre corchetes angulares <code>&lt; &gt;</code>.</p>
+
+                    <h4>Estructura de una etiqueta:</h4>
+                    <pre><code>&lt;etiqueta&gt;contenido&lt;/etiqueta&gt;</code></pre>
+
+                    <h4>Etiquetas con atributos:</h4>
+                    <pre><code>&lt;etiqueta atributo="valor"&gt;contenido&lt;/etiqueta&gt;</code></pre>
+
+                    <h4>Etiquetas auto-cerradas:</h4>
+                    <pre><code>&lt;etiqueta /&gt;</code></pre>
+
+                    <div class="card">
+                        <h4>Conceptos Clave</h4>
+                        <ul>
+                            <li><strong>Elemento</strong>: La etiqueta completa con su contenido</li>
+                            <li><strong>Atributo</strong>: Información adicional sobre el elemento</li>
+                            <li><strong>Valor</strong>: Lo que se asigna al atributo</li>
+                            <li><strong>Anidación</strong>: Colocar elementos dentro de otros elementos</li>
+                        </ul>
+                    </div>
+
+                    <h3>Ejemplo Práctico</h3>
+                    <pre><code>&lt;!-- Esto es un comentario --&gt;
+&lt;p class="destacado" id="primer-parrafo"&gt;
+    Este es un párrafo con &lt;strong&gt;texto en negrita&lt;/strong&gt;
+&lt;/p&gt;</code></pre>
+
+                    <div class="exercise">
+                        <h4>Primer Contacto con HTML</h4>
+                        <p>Crea un archivo llamado "mi-primera-pagina.html" y experimenta con diferentes etiquetas:</p>
+                        <ul>
+                            <li>Usa <code>&lt;h1&gt;</code> para un título</li>
+                            <li>Añade varios párrafos con <code>&lt;p&gt;</code></li>
+                            <li>Experimenta con <code>&lt;strong&gt;</code> y <code>&lt;em&gt;</code></li>
+                            <li>Añade comentarios con <code>&lt;!-- --&gt;</code></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Sección Estructura -->
+                <section id="structure" class="section">
+                    <h2>🏗️ Estructura Básica de HTML</h2>
+
+                    <p>Todo documento HTML debe tener esta estructura básica:</p>
+
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Primera Página Web&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;¡Hola Mundo!&lt;/h1&gt;
+    &lt;p&gt;Esta es mi primera página web.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <h3>Explicación de cada parte</h3>
+                    <div class="card">
+                        <ul>
+                            <li><code>&lt;!DOCTYPE html&gt;</code>: Declara que es un documento HTML5</li>
+                            <li><code>&lt;html&gt;</code>: Elemento raíz que contiene todo el documento</li>
+                            <li><code>&lt;head&gt;</code>: Contiene metadatos (información sobre la página)</li>
+                            <li><code>&lt;meta charset="UTF-8"&gt;</code>: Define la codificación de caracteres</li>
+                            <li><code>&lt;meta name="viewport"&gt;</code>: Hace la página responsive</li>
+                            <li><code>&lt;title&gt;</code>: Título que aparece en la pestaña del navegador</li>
+                            <li><code>&lt;body&gt;</code>: Contiene todo el contenido visible de la página</li>
+                        </ul>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Ejercicio Práctico 1</h4>
+                        <p>Crea tu primer archivo HTML:</p>
+                        <ol>
+                            <li>Abre tu editor de código</li>
+                            <li>Crea un nuevo archivo y guárdalo como "index.html"</li>
+                            <li>Copia la estructura básica anterior</li>
+                            <li>Cambia el título por tu nombre</li>
+                            <li>Añade un párrafo con una descripción tuya</li>
+                            <li>Abre el archivo en tu navegador</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Sección Elementos de Texto -->
+                <section id="text" class="section">
+                    <h2>📄 Elementos de Texto</h2>
+
+                    <h3>Encabezados</h3>
+                    <p>HTML tiene 6 niveles de encabezados, del más importante (h1) al menos importante (h6):</p>
+
+                    <pre><code>&lt;h1&gt;Encabezado Principal&lt;/h1&gt;
+&lt;h2&gt;Encabezado Secundario&lt;/h2&gt;
+&lt;h3&gt;Encabezado de Tercer Nivel&lt;/h3&gt;
+&lt;h4&gt;Encabezado de Cuarto Nivel&lt;/h4&gt;
+&lt;h5&gt;Encabezado de Quinto Nivel&lt;/h5&gt;
+&lt;h6&gt;Encabezado de Sexto Nivel&lt;/h6&gt;</code></pre>
+
+                    <h3>Párrafos y Formateo de Texto</h3>
+                    <pre><code>&lt;p&gt;Este es un párrafo normal.&lt;/p&gt;
+
+&lt;p&gt;Este párrafo contiene &lt;strong&gt;texto en negrita&lt;/strong&gt; 
+   y &lt;em&gt;texto en cursiva&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;También puedes usar &lt;b&gt;negrita&lt;/b&gt; y &lt;i&gt;cursiva&lt;/i&gt;, 
+   aunque strong y em son más semánticos.&lt;/p&gt;
+
+&lt;p&gt;Texto &lt;u&gt;subrayado&lt;/u&gt; y texto &lt;s&gt;tachado&lt;/s&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para mostrar código usa &lt;code&gt;console.log("Hola");&lt;/code&gt;.&lt;/p&gt;</code></pre>
+
+                    <div class="card">
+                        <h4>Diferencia entre &lt;strong&gt; vs &lt;b&gt; y &lt;em&gt; vs &lt;i&gt;</h4>
+                        <ul>
+                            <li><code>&lt;strong&gt;</code> y <code>&lt;em&gt;</code> tienen significado semántico</li>
+                            <li><code>&lt;b&gt;</code> y <code>&lt;i&gt;</code> solo cambian la apariencia visual</li>
+                            <li>Los lectores de pantalla entienden mejor strong y em</li>
+                            <li>Es mejor práctica usar las etiquetas semánticas</li>
+                        </ul>
+                    </div>
+
+                    <h3>Citas y Elementos Especiales</h3>
+                    <pre><code>&lt;blockquote&gt;
+    Esta es una cita larga que se destaca del texto principal.
+    - Autor Famoso
+&lt;/blockquote&gt;
+
+&lt;p&gt;La fórmula del agua es H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;Einstein escribió E=mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Presiona &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt; para copiar&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;Este texto está resaltado&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;Texto en letra pequeña&lt;/small&gt;&lt;/p&gt;</code></pre>
+
+                    <div class="exercise">
+                        <h4>Ejercicio Práctico 2</h4>
+                        <p>Crea una página "sobre-mi.html" con:</p>
+                        <ul>
+                            <li>Un encabezado principal con tu nombre</li>
+                            <li>Varios párrafos sobre ti usando diferentes elementos de texto</li>
+                            <li>Al menos 3 niveles de encabezados</li>
+                            <li>Texto en negrita, cursiva y subrayado</li>
+                            <li>Una cita inspiracional</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Sección Enlaces e Imágenes -->
+                <section id="links" class="section">
+                    <h2>🔗 Enlaces e Imágenes</h2>
+
+                    <h3>Enlaces (Links)</h3>
+                    <p>Los enlaces conectan páginas web entre sí:</p>
+
+                    <pre><code>&lt;!-- Enlace a otra página web --&gt;
+&lt;a href="https://www.google.com"&gt;Ir a Google&lt;/a&gt;
+
+&lt;!-- Enlace a otra página de tu sitio --&gt;
+&lt;a href="sobre-mi.html"&gt;Sobre Mí&lt;/a&gt;
+
+&lt;!-- Enlace a una sección de la misma página --&gt;
+&lt;a href="#seccion1"&gt;Ir a la Sección 1&lt;/a&gt;
+
+&lt;!-- Enlace que abre en nueva pestaña --&gt;
+&lt;a href="https://www.github.com" target="_blank"&gt;GitHub&lt;/a&gt;
+
+&lt;!-- Enlace de email --&gt;
+&lt;a href="mailto:ejemplo@email.com"&gt;Enviar Email&lt;/a&gt;
+
+&lt;!-- Enlace de teléfono --&gt;
+&lt;a href="tel:+1234567890"&gt;Llamar&lt;/a&gt;</code></pre>
+
+                    <h3>Imágenes</h3>
+                    <div class="alert alert-warning">
+                        <strong>Importante:</strong> El atributo <code>alt</code> es obligatorio y describe la imagen
+                        para personas con discapacidad visual y motores de búsqueda.
+                    </div>
+
+                    <pre><code>&lt;!-- Imagen básica --&gt;
+&lt;img src="mi-imagen.jpg" alt="Descripción de la imagen"&gt;
+
+&lt;!-- Imagen con dimensiones --&gt;
+&lt;img src="foto.jpg" alt="Mi foto" width="300" height="200"&gt;
+
+&lt;!-- Imagen responsive --&gt;
+&lt;img src="banner.jpg" alt="Banner principal" 
+     style="max-width: 100%; height: auto;"&gt;
+
+&lt;!-- Imagen como enlace --&gt;
+&lt;a href="https://www.ejemplo.com"&gt;
+    &lt;img src="logo.png" alt="Logo de la empresa"&gt;
+&lt;/a&gt;</code></pre>
+
+                    <div class="card">
+                        <h4>Buenas prácticas para el atributo alt</h4>
+                        <ul>
+                            <li>✅ <code>alt="Gato naranja durmiendo en un sofá"</code></li>
+                            <li>❌ <code>alt="imagen"</code> o <code>alt="foto"</code></li>
+                            <li>✅ Describe qué muestra la imagen</li>
+                            <li>✅ Si es decorativa, usa <code>alt=""</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Ejercicio Práctico 3</h4>
+                        <ol>
+                            <li>Añade una foto tuya a tu página "sobre-mi.html"</li>
+                            <li>Crea enlaces a tus redes sociales</li>
+                            <li>Crea un menú de navegación con enlaces</li>
+                            <li>Añade un enlace de email para contacto</li>
+                            <li>Practica con diferentes tipos de enlaces</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Sección Listas -->
+                <section id="lists" class="section">
+                    <h2>📋 Listas</h2>
+
+                    <h3>Listas No Ordenadas (Bullets)</h3>
+                    <pre><code>&lt;ul&gt;
+    &lt;li&gt;Primer elemento&lt;/li&gt;
+    &lt;li&gt;Segundo elemento&lt;/li&gt;
+    &lt;li&gt;Tercer elemento&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+                    <h3>Listas Ordenadas (Numeradas)</h3>
+                    <pre><code>&lt;ol&gt;
+    &lt;li&gt;Paso uno&lt;/li&gt;
+    &lt;li&gt;Paso dos&lt;/li&gt;
+    &lt;li&gt;Paso tres&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+                    <h3>Listas de Definición</h3>
+                    <pre><code>&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;Lenguaje de marcado para crear páginas web&lt;/dd&gt;
+    
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Lenguaje para dar estilo a las páginas web&lt;/dd&gt;
+    
+    &lt;dt&gt;JavaScript&lt;/dt&gt;
+    &lt;dd&gt;Lenguaje de programación para interactividad&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+                    <h3>Listas Anidadas</h3>
+                    <pre><code>&lt;ul&gt;
+    &lt;li&gt;Frutas
+        &lt;ul&gt;
+            &lt;li&gt;Manzanas&lt;/li&gt;
+            &lt;li&gt;Naranjas&lt;/li&gt;
+            &lt;li&gt;Plátanos&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Verduras
+        &lt;ul&gt;
+            &lt;li&gt;Zanahorias&lt;/li&gt;
+            &lt;li&gt;Brócoli&lt;/li&gt;
+            &lt;li&gt;Espinacas&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+                    <div class="exercise">
+                        <h4>Ejercicio Práctico 4</h4>
+                        <p>Crea una página "habilidades.html" con:</p>
+                        <ul>
+                            <li>Lista de tus habilidades técnicas</li>
+                            <li>Lista ordenada de tus objetivos del año</li>
+                            <li>Lista anidada de tus hobbies por categorías</li>
+                            <li>Lista de definición con términos técnicos</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Sección Tablas -->
+                <section id="tables" class="section">
+                    <h2>📊 Tablas</h2>
+
+                    <div class="alert alert-info">
+                        <strong>Nota:</strong> Las tablas se usan solo para mostrar datos tabulares, no para diseño de
+                        página.
+                    </div>
+
+                    <h3>Tabla Básica</h3>
+                    <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+        &lt;th&gt;Edad&lt;/th&gt;
+        &lt;th&gt;Ciudad&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Juan&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+        &lt;td&gt;Madrid&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;María&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+        &lt;td&gt;Barcelona&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+                    <h3>Tabla Completa con Estructura Semántica</h3>
+                    <pre><code>&lt;table&gt;
+    &lt;caption&gt;Ventas del Primer Trimestre&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Mes&lt;/th&gt;
+            &lt;th&gt;Ventas&lt;/th&gt;
+            &lt;th&gt;Meta&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Enero&lt;/td&gt;
+            &lt;td&gt;$50,000&lt;/td&gt;
+            &lt;td&gt;$45,000&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Febrero&lt;/td&gt;
+            &lt;td&gt;$60,000&lt;/td&gt;
+            &lt;td&gt;$55,000&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Total&lt;/td&gt;
+            &lt;td&gt;$110,000&lt;/td&gt;
+            &lt;td&gt;$100,000&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+
+                    <div class="card">
+                        <h4>Elementos de tabla</h4>
+                        <ul>
+                            <li><code>&lt;table&gt;</code>: Contenedor principal</li>
+                            <li><code>&lt;caption&gt;</code>: Título de la tabla</li>
+                            <li><code>&lt;thead&gt;</code>: Encabezado de la tabla</li>
+                            <li><code>&lt;tbody&gt;</code>: Cuerpo de la tabla</li>
+                            <li><code>&lt;tfoot&gt;</code>: Pie de la tabla</li>
+                            <li><code>&lt;th&gt;</code>: Celda de encabezado</li>
+                            <li><code>&lt;td&gt;</code>: Celda de datos</li>
+                            <li><code>&lt;tr&gt;</code>: Fila de la tabla</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Sección Formularios -->
+                <section id="forms" class="section">
+                    <h2>📝 Formularios</h2>
+
+                    <p>Los formularios permiten a los usuarios enviar información:</p>
+
+                    <h3>Formulario Básico</h3>
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre" required&gt;
+    
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+    
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;</code></pre>
+
+                    <h3>Tipos de Input</h3>
+                    <pre><code>&lt;form&gt;
+    &lt;!-- Texto --&gt;
+    &lt;input type="text" placeholder="Nombre"&gt;
+    
+    &lt;!-- Email --&gt;
+    &lt;input type="email" placeholder="email@ejemplo.com"&gt;
+    
+    &lt;!-- Contraseña --&gt;
+    &lt;input type="password" placeholder="Contraseña"&gt;
+    
+    &lt;!-- Número --&gt;
+    &lt;input type="number" min="1" max="100"&gt;
+    
+    &lt;!-- Fecha --&gt;
+    &lt;input type="date"&gt;
+    
+    &lt;!-- Color --&gt;
+    &lt;input type="color"&gt;
+    
+    &lt;!-- Archivo --&gt;
+    &lt;input type="file" accept="image/*"&gt;
+    
+    &lt;!-- Checkbox --&gt;
+    &lt;input type="checkbox" id="acepto"&gt;
+    &lt;label for="acepto"&gt;Acepto términos&lt;/label&gt;
+    
+    &lt;!-- Radio buttons --&gt;
+    &lt;input type="radio" id="si" name="respuesta" value="si"&gt;
+    &lt;label for="si"&gt;Sí&lt;/label&gt;
+    
+    &lt;!-- Área de texto --&gt;
+    &lt;textarea placeholder="Tu mensaje..."&gt;&lt;/textarea&gt;
+    
+    &lt;!-- Select --&gt;
+    &lt;select name="pais"&gt;
+        &lt;option value=""&gt;Selecciona un país&lt;/option&gt;
+        &lt;option value="es"&gt;España&lt;/option&gt;
+        &lt;option value="mx"&gt;México&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/form&gt;</code></pre>
+
+                    <div class="alert alert-success">
+                        <strong>Consejo:</strong> Siempre asocia las etiquetas <code>&lt;label&gt;</code> con sus inputs
+                        usando el atributo <code>for</code> que coincida con el <code>id</code> del input.
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Ejercicio Práctico 5</h4>
+                        <p>Crea una página "contacto.html" con:</p>
+                        <ul>
+                            <li>Un formulario completo de contacto</li>
+                            <li>Diferentes tipos de campos</li>
+                            <li>Validación básica con HTML5</li>
+                            <li>Estructura semántica con fieldset y legend</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Sección HTML5 Semántico -->
+                <section id="semantic" class="section">
+                    <h2>🎯 Elementos Semánticos HTML5</h2>
+
+                    <p>HTML5 introdujo elementos semánticos que dan significado al contenido:</p>
+
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Sitio Web Semántico&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#inicio"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#sobre"&gt;Sobre Mí&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;section id="inicio"&gt;
+            &lt;h1&gt;Bienvenido&lt;/h1&gt;
+            &lt;p&gt;Contenido principal...&lt;/p&gt;
+        &lt;/section&gt;
+        
+        &lt;section id="sobre"&gt;
+            &lt;h2&gt;Sobre Mí&lt;/h2&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Mi Historia&lt;/h3&gt;
+                &lt;p&gt;Mi historia personal...&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    
+    &lt;aside&gt;
+        &lt;h3&gt;Información Adicional&lt;/h3&gt;
+        &lt;p&gt;Contenido complementario...&lt;/p&gt;
+    &lt;/aside&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2025 Mi Nombre&lt;/p&gt;
+        &lt;address&gt;
+            &lt;a href="mailto:mi@email.com"&gt;mi@email.com&lt;/a&gt;
+        &lt;/address&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <div class="card">
+                        <h4>Elementos Semánticos</h4>
+                        <ul>
+                            <li><code>&lt;header&gt;</code>: Encabezado de página o sección</li>
+                            <li><code>&lt;nav&gt;</code>: Navegación principal</li>
+                            <li><code>&lt;main&gt;</code>: Contenido principal</li>
+                            <li><code>&lt;section&gt;</code>: Sección temática</li>
+                            <li><code>&lt;article&gt;</code>: Contenido independiente</li>
+                            <li><code>&lt;aside&gt;</code>: Contenido secundario</li>
+                            <li><code>&lt;footer&gt;</code>: Pie de página</li>
+                            <li><code>&lt;address&gt;</code>: Información de contacto</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Sección Multimedia -->
+                <section id="multimedia" class="section">
+                    <h2>🎵 Multimedia</h2>
+
+                    <h3>Audio</h3>
+                    <pre><code>&lt;!-- Audio básico --&gt;
+&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio.ogg" type="audio/ogg"&gt;
+    Tu navegador no soporta audio.
+&lt;/audio&gt;
+
+&lt;!-- Audio con opciones --&gt;
+&lt;audio controls autoplay loop muted&gt;
+    &lt;source src="musica.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+                    <h3>Video</h3>
+                    <pre><code>&lt;!-- Video básico --&gt;
+&lt;video controls width="640" height="360"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+    Tu navegador no soporta video.
+&lt;/video&gt;
+
+&lt;!-- Video con poster --&gt;
+&lt;video controls poster="thumbnail.jpg"&gt;
+    &lt;source src="mi-video.mp4" type="video/mp4"&gt;
+    &lt;track kind="subtitles" src="subtitulos.vtt" 
+           srclang="es" label="Español"&gt;
+&lt;/video&gt;</code></pre>
+
+                    <h3>YouTube Embebido</h3>
+                    <pre><code>&lt;iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/VIDEO_ID" 
+        frameborder="0" 
+        allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+                </section>
+
+                <!-- Sección CSS Básico -->
+                <section id="css" class="section">
+                    <h2>🎨 CSS Básico Integrado</h2>
+
+                    <h3>CSS Inline</h3>
+                    <pre><code>&lt;p style="color: red; font-size: 18px;"&gt;Texto rojo&lt;/p&gt;</code></pre>
+
+                    <h3>CSS Interno</h3>
+                    <pre><code>&lt;head&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        h1 {
+            color: navy;
+            text-align: center;
+        }
+        
+        .destacado {
+            background-color: yellow;
+            padding: 10px;
+        }
+        
+        #especial {
+            border: 2px solid red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+                    <h3>CSS Externo</h3>
+                    <pre><code>&lt;head&gt;
+    &lt;link rel="stylesheet" href="estilos.css"&gt;
+&lt;/head&gt;</code></pre>
+                </section>
+
+                <!-- Sección Responsive -->
+                <section id="responsive" class="section">
+                    <h2>📱 Diseño Responsive</h2>
+
+                    <h3>Meta Viewport</h3>
+                    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+                    <h3>Imágenes Responsive</h3>
+                    <pre><code>&lt;img src="imagen.jpg" alt="Descripción" 
+     style="max-width: 100%; height: auto;"&gt;</code></pre>
+
+                    <div class="alert alert-info">
+                        <strong>Consejo:</strong> Siempre incluye el meta viewport y haz las imágenes responsive con
+                        CSS.
+                    </div>
+                </section>
+
+                <!-- Sección Proyectos -->
+                <section id="projects" class="section">
+                    <h2>🎯 Proyectos Prácticos</h2>
+
+                    <div class="project">
+                        <h3>Proyecto 1: Página Personal</h3>
+                        <p><strong>Objetivo:</strong> Crear tu primera página web personal</p>
+                        <h4>Archivos a crear:</h4>
+                        <ul>
+                            <li>📄 index.html</li>
+                            <li>📄 sobre-mi.html</li>
+                            <li>📄 contacto.html</li>
+                            <li>🎨 estilos.css</li>
+                        </ul>
+                        <button class="btn" onclick="toggleCode('proyecto1')">Ver Código Completo</button>
+                        <div id="proyecto1" style="display: none;">
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Nombre - Página Personal&lt;/title&gt;
+    &lt;link rel="stylesheet" href="estilos.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="index.html"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="sobre-mi.html"&gt;Sobre Mí&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="contacto.html"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;section class="hero"&gt;
+            &lt;h1&gt;¡Hola! Soy [Tu Nombre]&lt;/h1&gt;
+            &lt;p&gt;Bienvenido a mi página personal&lt;/p&gt;
+            &lt;img src="mi-foto.jpg" alt="Foto de [Tu Nombre]"&gt;
+        &lt;/section&gt;
+        
+        &lt;section class="habilidades"&gt;
+            &lt;h2&gt;Mis Habilidades&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;HTML&lt;/li&gt;
+                &lt;li&gt;CSS&lt;/li&gt;
+                &lt;li&gt;JavaScript (próximamente)&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2025 [Tu Nombre]. Todos los derechos reservados.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <h3>Proyecto 2: Blog Personal</h3>
+                        <p><strong>Objetivo:</strong> Crear un blog con múltiples artículos</p>
+                        <h4>Características:</h4>
+                        <ul>
+                            <li>📰 Página principal con lista de artículos</li>
+                            <li>📝 Páginas individuales para cada artículo</li>
+                            <li>🏷️ Sistema de categorías</li>
+                            <li>👤 Sidebar con información del autor</li>
+                        </ul>
+                        <button class="btn" onclick="toggleCode('proyecto2')">Ver Estructura</button>
+                        <div id="proyecto2" style="display: none;">
+                            <pre><code>mi-blog/
+├── index.html
+├── articulo1.html
+├── articulo2.html
+├── css/
+│   └── estilos.css
+├── img/
+│   ├── banner.jpg
+│   └── articulos/
+└── js/
+    └── script.js</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <h3>Proyecto 3: Portafolio Profesional</h3>
+                        <p><strong>Objetivo:</strong> Crear un portafolio completo y profesional</p>
+                        <h4>Características:</h4>
+                        <ul>
+                            <li>🎨 Diseño moderno y responsive</li>
+                            <li>🖼️ Galería de proyectos</li>
+                            <li>📞 Formulario de contacto</li>
+                            <li>⚡ Animaciones CSS</li>
+                            <li>🔍 Optimizado para SEO</li>
+                        </ul>
+                        <button class="btn" onclick="toggleCode('proyecto3')">Ver Demo</button>
+                        <div id="proyecto3" style="display: none;">
+                            <div class="alert alert-success">
+                                <strong>¡Proyecto Avanzado!</strong> Este proyecto combina todo lo aprendido en la guía.
+                            </div>
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta name=&quot;description&quot;
+        content=&quot;John Jairo Vargas Gonz&aacute;lez - Frontend Developer especializado en AWS, implementaci&oacute;n de proyectos y desarrollo web&quot;&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;frontend developer, AWS, JavaScript, Python, MongoDB, Cali, Colombia&quot;&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;John Jairo Vargas Gonz&aacute;lez&quot;&gt;
+    &lt;title&gt;John Jairo Vargas Gonz&aacute;lez - Frontend Developer&lt;/title&gt;
+    &lt;link href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Fallback for older browsers */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
+        }
+
+        /* Fallback for browsers without backdrop-filter support */
+        @supports not (backdrop-filter: blur(10px)) {
+            nav {
+                background: rgba(255, 255, 255, 0.9);
+            }
+
+            .hero-content,
+            .about-content,
+            .skill-category,
+            .experience-item,
+            .contact-item {
+                background: rgba(255, 255, 255, 0.9);
+                color: #333;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav.scrolled a {
+            color: #333;
+        }
+
+        nav a:hover {
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f5576c;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideUp 1s ease-out;
+            max-width: 800px;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            transition: all 0.3s ease;
+            animation: photoFloat 3s ease-in-out infinite;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            border-color: #f5576c;
+            box-shadow: 0 12px 40px rgba(245, 87, 108, 0.4);
+        }
+
+        @keyframes photoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero .location {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #f5576c, #f093fb);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-category:hover::before {
+            left: 100%;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(245, 87, 108, 0.5);
+            box-shadow: 0 15px 35px rgba(245, 87, 108, 0.2);
+        }
+
+        .skill-category h3 {
+            color: #f5576c;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            line-height: 1.3;
+        }
+
+        .skill-category:hover h3 {
+            color: #f093fb;
+            transform: translateX(5px);
+        }
+
+        .skill-category h3 i {
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover h3 i {
+            transform: scale(1.2);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(245, 87, 108, 0.2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(245, 87, 108, 0.3);
+            transition: all 0.3s ease;
+            cursor: default;
+            text-align: center;
+            min-width: fit-content;
+            white-space: nowrap;
+            flex: 0 0 auto;
+        }
+
+        .skill-tag:hover {
+            background: rgba(245, 87, 108, 0.4);
+            border-color: rgba(245, 87, 108, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 87, 108, 0.3);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #f5576c, #f093fb);
+        }
+
+        .experience-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            margin-left: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: #f5576c;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .experience-item h3 {
+            color: #f5576c;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .duration {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            color: rgba(255, 255, 255, 0.9);
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience-item li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #f5576c;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(245, 87, 108, 0.5);
+            box-shadow: 0 15px 35px rgba(245, 87, 108, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #f5576c;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover i {
+            transform: scale(1.2);
+            color: #f093fb;
+        }
+
+        .contact-item h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a,
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .contact-item a:hover {
+            color: #f5576c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .experience-timeline {
+                padding-left: 1rem;
+            }
+
+            .experience-item {
+                margin-left: 1rem;
+            }
+
+            .experience-item::before {
+                left: -2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;animated-bg&quot;&gt;&lt;/div&gt;
+
+    &lt;nav id=&quot;navbar&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;#home&quot;&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#about&quot;&gt;Acerca de&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#skills&quot;&gt;Habilidades&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#experience&quot;&gt;Experiencia&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;section id=&quot;home&quot; class=&quot;hero&quot;&gt;
+        &lt;div class=&quot;hero-content&quot;&gt;
+            &lt;img src=&quot;img/profile1.jpg&quot; alt=&quot;John Jairo Vargas Gonz&aacute;lez&quot; class=&quot;profile-photo&quot;&gt;
+            &lt;h1&gt;John Jairo Vargas Gonz&aacute;lez&lt;/h1&gt;
+            &lt;p class=&quot;subtitle&quot;&gt;Frontend Developer | AWS services | Implementaci&oacute;n y manejo de proyectos | Soporte servicios web | HTML | CSS | JavaScript | Python | TXT, XML Y JSON | APIs | MongoDB | SQL | Postman | Fundamentos An&aacute;lisis de Datos |&lt;/p&gt;
+            &lt;p class=&quot;location&quot;&gt;&lt;i class=&quot;fas fa-map-marker-alt&quot;&gt;&lt;/i&gt; Cali, Valle del Cauca, Colombia&lt;/p&gt;
+            &lt;a href=&quot;#contact&quot; class=&quot;cta-button&quot;&gt;&iexcl;Trabajemos Juntos!&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;about&quot; class=&quot;fade-in&quot;&gt;
+        &lt;h2 class=&quot;section-title&quot;&gt;Acerca de M&iacute;&lt;/h2&gt;
+        &lt;div class=&quot;about-content&quot;&gt;
+            &lt;p&gt;Ingeniero de Implementaci&oacute;n y Soporte IT con amplia experiencia en desarrollo frontend, administraci&oacute;n de
+                bases de datos y gesti&oacute;n de proyectos en entornos digitales. Con m&aacute;s de tres a&ntilde;os de trayectoria en
+                servicios electr&oacute;nicos y soporte de servicios web, domino tecnolog&iacute;as como HTML, CSS, JavaScript y
+                Python, adem&aacute;s de herramientas avanzadas de an&aacute;lisis y administraci&oacute;n de datos.&lt;/p&gt;
+            &lt;br&gt;
+            &lt;p&gt;Poseo certificaciones en AWS y fundamentos de an&aacute;lisis de datos, lo que me permite implementar soluciones
+                optimizadas y seguras para la infraestructura IT. Mi enfoque est&aacute; en mejorar la eficiencia operativa y
+                promover la transformaci&oacute;n digital a trav&eacute;s de integraciones API y una gesti&oacute;n estrat&eacute;gica de proyectos.
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;skills&quot; class=&quot;fade-in&quot;&gt;
+        &lt;h2 class=&quot;section-title&quot;&gt;Habilidades T&eacute;cnicas&lt;/h2&gt;
+        &lt;div class=&quot;skills-grid&quot;&gt;
+            &lt;div class=&quot;skill-category&quot;&gt;
+                &lt;h3&gt;&lt;i class=&quot;fas fa-code&quot;&gt;&lt;/i&gt; Frontend Development&lt;/h3&gt;
+                &lt;div class=&quot;skill-tags&quot;&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;HTML5&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;CSS3&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;JavaScript&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;Sass&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;CSS Grid&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;Responsive Design&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;skill-category&quot;&gt;
+                &lt;h3&gt;&lt;i class=&quot;fas fa-server&quot;&gt;&lt;/i&gt; Backend &amp; Databases&lt;/h3&gt;
+                &lt;div class=&quot;skill-tags&quot;&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;Python&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;MongoDB&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;SQL Server&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;PL/SQL&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;Oracle&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;skill-category&quot;&gt;
+                &lt;h3&gt;&lt;i class=&quot;fas fa-cloud&quot;&gt;&lt;/i&gt; Cloud &amp; DevOps&lt;/h3&gt;
+                &lt;div class=&quot;skill-tags&quot;&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;AWS Services&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;Git&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;GitHub&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;API REST&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;SOAP&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;skill-category&quot;&gt;
+                &lt;h3&gt;&lt;i class=&quot;fas fa-tools&quot;&gt;&lt;/i&gt; Herramientas &amp; An&aacute;lisis&lt;/h3&gt;
+                &lt;div class=&quot;skill-tags&quot;&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;Postman&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;XML&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;JSON&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;Data Analysis&lt;/span&gt;
+                    &lt;span class=&quot;skill-tag&quot;&gt;AutoCAD&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;experience&quot; class=&quot;fade-in&quot;&gt;
+        &lt;h2 class=&quot;section-title&quot;&gt;Experiencia Profesional&lt;/h2&gt;
+        &lt;div class=&quot;experience-timeline&quot;&gt;
+            &lt;div class=&quot;experience-item&quot;&gt;
+                &lt;h3&gt;Ingeniero de Implementaci&oacute;n y Soporte&lt;/h3&gt;
+                &lt;div class=&quot;company&quot;&gt;Estupendo&lt;/div&gt;
+                &lt;div class=&quot;duration&quot;&gt;Junio 2021 - Abril 2025 (3 a&ntilde;os 11 meses)&lt;/div&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Implementaci&oacute;n de facturaci&oacute;n electr&oacute;nica y n&oacute;mina electr&oacute;nica&lt;/li&gt;
+                    &lt;li&gt;Manejo de servicios SOAP IP y API REST&lt;/li&gt;
+                    &lt;li&gt;Administraci&oacute;n de bases de datos MongoDB&lt;/li&gt;
+                    &lt;li&gt;Gesti&oacute;n y direcci&oacute;n de proyectos de implementaci&oacute;n&lt;/li&gt;
+                    &lt;li&gt;Integraciones ERP-Cliente mediante consumo de servicios API&lt;/li&gt;
+                    &lt;li&gt;Manejo de servicios AWS y validaci&oacute;n de archivos XML, TXT, JSON&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;experience-item&quot;&gt;
+                &lt;h3&gt;Ingeniero de Servicios&lt;/h3&gt;
+                &lt;div class=&quot;company&quot;&gt;Carvajal Tecnolog&iacute;a y Servicios&lt;/div&gt;
+                &lt;div class=&quot;duration&quot;&gt;Diciembre 2018 - Noviembre 2019 (1 a&ntilde;o)&lt;/div&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Manejo de SQL, PL/SQL y Oracle para bases de datos&lt;/li&gt;
+                    &lt;li&gt;Implementaci&oacute;n de proyectos de facturaci&oacute;n y n&oacute;mina electr&oacute;nica&lt;/li&gt;
+                    &lt;li&gt;Soporte t&eacute;cnico y resoluci&oacute;n de incidencias&lt;/li&gt;
+                    &lt;li&gt;Gesti&oacute;n de controles de cambio y seguimiento de servicios&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;experience-item&quot;&gt;
+                &lt;h3&gt;Asistente de Aplicaciones T.I&lt;/h3&gt;
+                &lt;div class=&quot;company&quot;&gt;Gane Cali&lt;/div&gt;
+                &lt;div class=&quot;duration&quot;&gt;Abril 2016 - Junio 2017 (1 a&ntilde;o 3 meses)&lt;/div&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Monitoreo de plataforma (CPU, memoria y servicios)&lt;/li&gt;
+                    &lt;li&gt;Soporte de infraestructura y aplicaciones&lt;/li&gt;
+                    &lt;li&gt;Implementaci&oacute;n de actualizaciones en plataforma de apuestas&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;experience-item&quot;&gt;
+                &lt;h3&gt;Ingeniero de Operaciones T.I&lt;/h3&gt;
+                &lt;div class=&quot;company&quot;&gt;Codesa&lt;/div&gt;
+                &lt;div class=&quot;duration&quot;&gt;Abril 2014 - Marzo 2016 (1 a&ntilde;o 11 meses)&lt;/div&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Monitoreo de plataforma (CPU, memoria y servicios)&lt;/li&gt;
+                    &lt;li&gt;Soporte de infraestructura y aplicaciones&lt;/li&gt;
+                    &lt;li&gt;Implementaci&oacute;n de actualizaciones en plataforma de apuestas&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;experience-item&quot;&gt;
+                &lt;h3&gt;Dibujante Arquitect&oacute;nico de Redes&lt;/h3&gt;
+                &lt;div class=&quot;company&quot;&gt;Emcomunitel S.A.S&lt;/div&gt;
+                &lt;div class=&quot;duration&quot;&gt;Junio 2013 - Noviembre 2013 (5 meses)&lt;/div&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Manejo de programas como AUTOCAD para el dise&ntilde;o de las 
+                        instalaciones realizadas por los t&eacute;cnicos para el operador de Movistar 
+                        realizara el pago de la instalaci&oacute;n.
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;contact&quot; class=&quot;fade-in&quot;&gt;
+        &lt;h2 class=&quot;section-title&quot;&gt;Contacto&lt;/h2&gt;
+        &lt;div class=&quot;contact-info&quot;&gt;
+            &lt;div class=&quot;contact-item&quot;&gt;
+                &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
+                &lt;h3&gt;Email&lt;/h3&gt;
+                &lt;a href=&quot;mailto:johnjairovargasgonzalez@gmail.com&quot;&gt;johnjairovargasgonzalez@gmail.com&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;contact-item&quot;&gt;
+                &lt;i class=&quot;fas fa-phone&quot;&gt;&lt;/i&gt;
+                &lt;h3&gt;Tel&eacute;fono&lt;/h3&gt;
+                &lt;a href=&quot;tel:+573136521860&quot;&gt;+57 313 652 1860&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;contact-item&quot;&gt;
+                &lt;i class=&quot;fab fa-linkedin&quot;&gt;&lt;/i&gt;
+                &lt;h3&gt;LinkedIn&lt;/h3&gt;
+                &lt;a href=&quot;https://www.linkedin.com/in/john-jairo-vargas-gonz&aacute;lez-25a790237&quot; target=&quot;_blank&quot;&gt;Ver
+                    Perfil&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;contact-item&quot;&gt;
+                &lt;i class=&quot;fas fa-map-marker-alt&quot;&gt;&lt;/i&gt;
+                &lt;h3&gt;Ubicaci&oacute;n&lt;/h3&gt;
+                &lt;p style=&quot;color: rgba(255,255,255,0.9);&quot;&gt;Carrera 83A # 18 - 64&lt;br&gt;Cali, Valle del Cauca&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;script&gt;
+        // Smooth scrolling
+        document.querySelectorAll('a[href^=&quot;#&quot;]').forEach(anchor =&gt; {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () =&gt; {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY &gt; 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) =&gt; {
+            entries.forEach(entry =&gt; {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el =&gt; {
+            observer.observe(el);
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const particleCount = 50;
+            const body = document.body;
+
+            for (let i = 0; i &lt; particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                const size = Math.random() * 5 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+
+                body.appendChild(particle);
+            }
+        }
+
+        // Add loading screen
+        window.addEventListener('load', () =&gt; {
+            document.body.style.visibility = 'visible';
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            typeWriter(heroTitle, originalText, 80);
+            createParticles();
+        });
+
+        // Hide content until fully loaded
+        document.body.style.visibility = 'hidden';
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección Buenas Prácticas -->
+                <section id="practices" class="section">
+                    <h2>✅ Buenas Prácticas</h2>
+
+                    <h3>Estructura y Organización</h3>
+                    <div class="card">
+                        <h4>✅ Correcto</h4>
+                        <pre><code>&lt;header&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#inicio"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+                        <h4>❌ Incorrecto</h4>
+                        <pre><code>&lt;div class="header"&gt;
+    &lt;div class="nav"&gt;
+        &lt;div class="menu"&gt;
+            &lt;div&gt;&lt;a href="#inicio"&gt;Inicio&lt;/a&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+
+                    <h3>Accesibilidad</h3>
+                    <div class="alert alert-success">
+                        <h4>Reglas importantes:</h4>
+                        <ul>
+                            <li>🖼️ Siempre usa <code>alt</code> en imágenes</li>
+                            <li>🏷️ Asocia <code>labels</code> con <code>inputs</code></li>
+                            <li>📊 Usa encabezados jerárquicos (h1, h2, h3...)</li>
+                            <li>🎨 Mantén buen contraste de colores</li>
+                            <li>⌨️ Asegura navegación con teclado</li>
+                        </ul>
+                    </div>
+
+                    <h3>SEO Básico</h3>
+                    <div class="card">
+                        <ul>
+                            <li>📄 Títulos únicos y descriptivos</li>
+                            <li>📝 Meta descripciones informativas</li>
+                            <li>🏗️ Estructura de encabezados lógica</li>
+                            <li>🔗 URLs semánticas y limpias</li>
+                            <li>⚡ Páginas que cargan rápido</li>
+                        </ul>
+                    </div>
+
+                    <h3>Performance</h3>
+                    <pre><code>&lt;!-- Optimiza imágenes --&gt;
+&lt;img src="imagen.jpg" alt="Descripción" loading="lazy"&gt;
+
+&lt;!-- Usa formatos modernos --&gt;
+&lt;picture&gt;
+    &lt;source srcset="imagen.webp" type="image/webp"&gt;
+    &lt;img src="imagen.jpg" alt="Descripción"&gt;
+&lt;/picture&gt;</code></pre>
+                </section>
+
+                <!-- Sección Recursos -->
+                <section id="resources" class="section">
+                    <h2>📚 Recursos Adicionales</h2>
+
+                    <div class="card">
+                        <h3>🛠️ Herramientas Útiles</h3>
+                        <ul>
+                            <li><strong>CodePen:</strong> <a href="https://codepen.io/"
+                                    target="_blank">https://codepen.io/</a> - Prototipos rápidos</li>
+                            <li><strong>Can I Use:</strong> <a href="https://caniuse.com/"
+                                    target="_blank">https://caniuse.com/</a> - Compatibilidad</li>
+                            <li><strong>HTML Validator:</strong> <a href="https://validator.w3.org/"
+                                    target="_blank">https://validator.w3.org/</a></li>
+                            <li><strong>Google Fonts:</strong> <a href="https://fonts.google.com/"
+                                    target="_blank">https://fonts.google.com/</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>📖 Documentación</h3>
+                        <ul>
+                            <li><strong>MDN Web Docs:</strong> <a href="https://developer.mozilla.org/"
+                                    target="_blank">https://developer.mozilla.org/</a></li>
+                            <li><strong>W3Schools:</strong> <a href="https://www.w3schools.com/"
+                                    target="_blank">https://www.w3schools.com/</a></li>
+                            <li><strong>HTML Specification:</strong> <a href="https://html.spec.whatwg.org/"
+                                    target="_blank">https://html.spec.whatwg.org/</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎓 Cursos Recomendados</h3>
+                        <ul>
+                            <li><strong>freeCodeCamp:</strong> <a href="https://www.freecodecamp.org/"
+                                    target="_blank">https://www.freecodecamp.org/</a> - Gratuito</li>
+                            <li><strong>Codecademy:</strong> <a href="https://www.codecademy.com/"
+                                    target="_blank">https://www.codecademy.com/</a></li>
+                            <li><strong>YouTube - Traversy Media:</strong> Canal excelente para tutoriales</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>🌟 Próximos Pasos</h3>
+                        <p>Una vez domines HTML, aprende en este orden:</p>
+                        <ol>
+                            <li>🎨 <strong>CSS Avanzado</strong> - Flexbox, Grid, Animations</li>
+                            <li>⚡ <strong>JavaScript</strong> - Interactividad y lógica</li>
+                            <li>🚀 <strong>Frameworks</strong> - React, Vue o Angular</li>
+                            <li>🔧 <strong>Herramientas</strong> - Git, NPM, Build tools</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <h4>✅ Checklist Final</h4>
+                        <p>Antes de considerar que dominas HTML, asegúrate de poder hacer esto:</p>
+                        <ul>
+                            <li>☐ Crear estructura básica HTML5</li>
+                            <li>☐ Usar elementos semánticos correctamente</li>
+                            <li>☐ Crear formularios funcionales</li>
+                            <li>☐ Implementar navegación entre páginas</li>
+                            <li>☐ Hacer sitios responsive</li>
+                            <li>☐ Seguir buenas prácticas de accesibilidad</li>
+                            <li>☐ Crear un proyecto completo desde cero</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="contacto" class="section">
+                    <h2>📞 Contacto</h2>
+                    <p>¿Tienes dudas, comentarios o sugerencias? ¡Escríbeme!</p>
+                    <form action="https://formsubmit.co/johnjairovargasgonzalez@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false" />
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required />
+                        <label for="email">Correo:</label>
+                        <input type="email" id="email" name="email" required />
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        <button type="submit">Enviar Mensaje</button>
+                    </form>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>🎉 ¡Felicidades por completar la guía!</h3>
+            <p>Ahora tienes todos los conocimientos para crear sitios web profesionales</p>
+
+            <div class="social-links">
+                <a href="https://github.com" target="_blank" aria-label="GitHub">📱</a>
+                <a href="https://codepen.io" target="_blank" aria-label="CodePen">✏️</a>
+                <a href="https://developer.mozilla.org" target="_blank" aria-label="MDN">📚</a>
+            </div>
+
+            <div class="card">
+                <h4>🚀 Tu siguiente paso:</h4>
+                <p>Elige uno de los proyectos prácticos y créalo completamente. Una vez termines, súbelo a GitHub y
+                    compártelo con la comunidad.</p>
+                <button class="btn" onclick="navigateToSection('projects')">Comenzar Proyecto</button>
+            </div>
+
+            <p style="margin-top: 2rem; opacity: 0.8;">
+                <strong>Guía HTML 2025</strong> - v1.0 © 2025 JovaDev by John Jairo Vargas González para aprendizaje
+                autodidacta<br>
+                ⭐ Si te ha sido útil, compártela con otros desarrolladores
+            </p>
+        </div>
+    </footer>
+
+    <script>
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+
+                // Activar sección
+                sections.forEach(sec => sec.classList.remove('active'));
+                document.getElementById(targetId).classList.add('active');
+
+                // Actualizar navegación
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Funcionalidad JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Referencias a elementos
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            const sections = document.querySelectorAll('.section');
+            const themeToggle = document.getElementById('themeToggle');
+            const progressBar = document.getElementById('progressBar');
+
+            // Navegación entre secciones
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetSection = this.getAttribute('data-section');
+
+                    // Ocultar todas las secciones
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    // Mostrar sección objetivo
+                    const target = document.getElementById(targetSection);
+                    if (target) {
+                        target.classList.add('active');
+                    }
+
+                    // Actualizar enlaces activos
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Scroll al top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    // Actualizar barra de progreso
+                    updateProgress();
+                });
+            });
+
+            // Toggle tema oscuro/claro
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+                document.documentElement.setAttribute('data-theme', newTheme);
+                this.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+
+                // Guardar preferencia
+                localStorage.setItem('theme', newTheme);
+            });
+
+            // Cargar tema guardado
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+            }
+
+            // Barra de progreso
+            function updateProgress() {
+                const sections = document.querySelectorAll('.section');
+                const activeSection = document.querySelector('.section.active');
+
+                if (activeSection) {
+                    const sectionIndex = Array.from(sections).indexOf(activeSection);
+                    const progress = ((sectionIndex + 1) / sections.length) * 100;
+                    progressBar.style.width = progress + '%';
+                }
+            }
+
+            // Barra de progreso en scroll
+            window.addEventListener('scroll', function () {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+
+            // Función para navegar a secciones específicas
+            window.navigateToSection = function (sectionId) {
+                // Ocultar todas las secciones
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Mostrar sección objetivo
+                const target = document.getElementById(sectionId);
+                if (target) {
+                    target.classList.add('active');
+                }
+
+                // Actualizar enlaces activos en el sidebar
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                const activeLink = document.querySelector(`[data-section="${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+
+                // Scroll al top suavemente
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Actualizar barra de progreso
+                updateProgress();
+            };
+
+            // Función para mostrar/ocultar código de proyectos
+            window.toggleCode = function (id) {
+                const element = document.getElementById(id);
+                if (element.style.display === 'none') {
+                    element.style.display = 'block';
+                } else {
+                    element.style.display = 'none';
+                }
+            };
+
+            // Inicializar barra de progreso
+            updateProgress();
+
+            // Efecto de escritura en el header
+            const headerTitle = document.querySelector('.header h1');
+            if (headerTitle) {
+                const text = headerTitle.textContent;
+                headerTitle.textContent = '';
+                let i = 0;
+
+                function typeWriter() {
+                    if (i < text.length) {
+                        headerTitle.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    }
+                }
+
+                setTimeout(typeWriter, 500);
+            }
+
+            // Animación de entrada para las tarjetas
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar tarjetas y ejercicios
+            document.querySelectorAll('.card, .exercise, .project, .alert').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Smooth scroll para navegación
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Easter egg: Konami Code
+            let konamiCode = [];
+            const konamiSequence = [
+                'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+                'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+                'KeyB', 'KeyA'
+            ];
+
+            document.addEventListener('keydown', function (e) {
+                konamiCode.push(e.code);
+
+                if (konamiCode.length > konamiSequence.length) {
+                    konamiCode.shift();
+                }
+
+                if (konamiCode.join('') === konamiSequence.join('')) {
+                    // Activar modo desarrollador
+                    document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3)';
+                    document.body.style.backgroundSize = '400% 400%';
+                    document.body.style.animation = 'rainbow 4s ease infinite';
+
+                    // Agregar CSS para la animación
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes rainbow {
+                            0% { background-position: 0% 50%; }
+                            50% { background-position: 100% 50%; }
+                            100% { background-position: 0% 50%; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+
+                    // Mostrar mensaje
+                    const congratsDiv = document.createElement('div');
+                    congratsDiv.innerHTML = `
+                        <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                             background: rgba(0,0,0,0.9); color: white; padding: 2rem; 
+                             border-radius: 10px; z-index: 10000; text-align: center;">
+                            <h2>🎉 ¡Desarrollador Activado! 🎉</h2>
+                            <p>Has encontrado el easter egg. ¡Sigue explorando y programando!</p>
+                            <button onclick="this.parentElement.parentElement.remove()" 
+                                    style="background: #3b82f6; color: white; border: none; 
+                                           padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; margin-top: 1rem;">
+                                Continuar
+                            </button>
+                        </div>
+                    `;
+                    document.body.appendChild(congratsDiv);
+
+                    konamiCode = [];
+                }
+            });
+
+            console.log(`
+            🎉 ¡Bienvenido a la Guía HTML 2025! 🎉
+            
+            💡 Consejos para desarrolladores:
+            - Usa las DevTools del navegador (F12)
+            - Practica escribiendo código a mano
+            - No copies y pegues, ¡entiende el código!
+            - Únete a comunidades de desarrolladores
+            
+            🚀 ¡A programar se ha dicho!
+            `);
+        });
+    </script>
+</body>
+
+</html>
