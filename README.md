@@ -3,7 +3,7 @@
 Una guía interactiva y completa para aprender HTML desde cero hasta nivel avanzado.
 
 ## 🚀 Demo en vivo
-[Ver guía interactiva](https://tu-usuario.github.io/html-guide-2025)
+[Ver guía interactiva](https://johnja1989.github.io/html-guide-2025/)
 
 ## ✨ Características
 - 17 secciones temáticas completas
@@ -18,4 +18,5 @@ Una guía interactiva y completa para aprender HTML desde cero hasta nivel avanz
 3. ¡Comienza a aprender HTML!
 
 ## 📝 Licencia
+
 MIT License - Uso educativo libre
